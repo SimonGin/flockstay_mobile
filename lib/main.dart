@@ -1,4 +1,4 @@
-import 'package:flockstay_mobile/screens/auth/login/scr.dart';
+import 'package:flockstay_mobile/routes/index.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -8,14 +8,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'FlockStay',
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
         useMaterial3: true,
       ),
-      home: LoginScreen(),
+      routerConfig: appRouter,
     );
   }
 }

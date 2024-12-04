@@ -1,8 +1,9 @@
 import 'package:flockstay_mobile/components/auth/input_field.dart';
 import 'package:flockstay_mobile/constants/colors.dart';
-import 'package:flockstay_mobile/screens/auth/register/scr.dart';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginScreen extends StatelessWidget {
   final TextEditingController phoneCtrlr = TextEditingController();
@@ -13,6 +14,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 70),
@@ -126,10 +128,7 @@ class LoginScreen extends StatelessWidget {
                     style: const TextStyle(color: flockCyan),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => RegisterScreen()));
+                        context.goNamed("register");
                       },
                   )
                 ])),

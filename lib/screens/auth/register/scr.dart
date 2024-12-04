@@ -1,19 +1,25 @@
 import 'package:flockstay_mobile/components/auth/input_field.dart';
 import 'package:flockstay_mobile/constants/colors.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 // ignore: must_be_immutable
 class RegisterScreen extends StatelessWidget {
   TextEditingController phoneCtrlr = TextEditingController();
+  TextEditingController nameCtrlr = TextEditingController();
   TextEditingController passwordCtrlr = TextEditingController();
-  RegisterScreen({super.key, phoneCtrlr, passwordCtrlr});
+  TextEditingController confirmpasswordCtrlr = TextEditingController();
+
+  RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
           child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 70),
+        padding: const EdgeInsets.only(left: 30, right: 30, top: 70),
         child: Column(
           children: [
             RichText(
@@ -45,7 +51,7 @@ class RegisterScreen extends StatelessWidget {
                     prefixIcon: Icons.phone),
                 const SizedBox(height: 20),
                 InputField(
-                    controller: phoneCtrlr,
+                    controller: nameCtrlr,
                     placeholder: "Enter your username",
                     prefixIcon: Icons.person),
                 const SizedBox(height: 20),
@@ -57,7 +63,7 @@ class RegisterScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 InputField(
-                  controller: passwordCtrlr,
+                  controller: confirmpasswordCtrlr,
                   placeholder: "Confirm your password",
                   prefixIcon: Icons.lock,
                   isPassword: true,
@@ -91,9 +97,13 @@ class RegisterScreen extends StatelessWidget {
                     text: "Already have an account? ",
                     style: TextStyle(color: Colors.black.withOpacity(0.6)),
                   ),
-                  const TextSpan(
+                  TextSpan(
                     text: "Sign In",
-                    style: TextStyle(color: flockCyan),
+                    style: const TextStyle(color: flockCyan),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        context.goNamed("login");
+                      },
                   )
                 ])),
           ],
