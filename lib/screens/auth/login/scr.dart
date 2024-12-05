@@ -3,6 +3,7 @@ import 'package:flockstay_mobile/constants/colors.dart';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -68,7 +69,9 @@ class LoginScreen extends StatelessWidget {
               margin: const EdgeInsets.symmetric(vertical: 20),
               width: double.infinity,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  GoRouter.of(context).go("/home");
+                },
                 style: ButtonStyle(
                   backgroundColor: const WidgetStatePropertyAll(flockCyan),
                   shape: WidgetStateProperty.all(
@@ -108,12 +111,11 @@ class LoginScreen extends StatelessWidget {
                 ),
               ],
             ),
+            const SizedBox(height: 20),
             IconButton(
                 onPressed: () {},
-                icon: const Icon(
-                  Icons.facebook,
-                  size: 80,
-                )),
+                icon: SvgPicture.asset("assets/icons/gg_icon.svg")),
+            const SizedBox(height: 20),
             RichText(
                 text: TextSpan(
                     style: const TextStyle(
