@@ -48,17 +48,12 @@ class _CustomerLayoutState extends State<CustomerLayout> {
 
   void _onItemTapped(int index) {
     if (_currentIndex != index) {
-      // Update the URL via GoRouter
       context.go(_routes[index]);
-
-      // Animate to the selected page
       _pageController.animateToPage(
         index,
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
-
-      // Update the current index
       setState(() {
         _currentIndex = index;
       });
