@@ -85,9 +85,9 @@ class _CustomerLayoutState extends State<CustomerLayout> {
           color: Colors.white,
           boxShadow: [
             BoxShadow(
-              offset: const Offset(0, -10),
+              offset: const Offset(0, -5),
               blurRadius: 35,
-              color: Colors.cyan.withOpacity(0.38),
+              color: Colors.cyan.withOpacity(0.2),
             )
           ],
         ),

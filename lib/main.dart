@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'FlockStay',
       theme: ThemeData(
         textTheme: GoogleFonts.poppinsTextTheme(),
-        scaffoldBackgroundColor: Colors.white,
+        scaffoldBackgroundColor: const Color(0xffF9F9F9),
         useMaterial3: true,
       ),
       routerConfig: appRouter,
