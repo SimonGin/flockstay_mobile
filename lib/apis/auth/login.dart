@@ -1,9 +1,11 @@
 // ignore_for_file: avoid_print
 import 'package:dio/dio.dart';
+import 'package:flockstay_mobile/models/auth/login_response.dart';
 import 'package:flockstay_mobile/routes/index.dart';
 import 'package:flockstay_mobile/services/dio_client.dart';
 import 'package:quickalert/quickalert.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> login(String phone, String password) async {
   Dio dio = DioClient().dio;
@@ -17,6 +19,9 @@ Future<void> login(String phone, String password) async {
     }
     switch (response.statusCode) {
       case 200:
+        LoginResponse loginData = LoginResponse.fromJson(response.data);
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('access_token', loginData.accessToken);
         QuickAlert.show(
           context: navigatorKey.currentContext!,
           type: QuickAlertType.success,
