@@ -5,12 +5,12 @@ import 'package:flockstay_mobile/services/dio_client.dart';
 import 'package:quickalert/quickalert.dart';
 import 'package:go_router/go_router.dart';
 
-Future<void> register(String phone, String name, String password) async {
+Future<void> login(String phone, String password) async {
   Dio dio = DioClient().dio;
 
   try {
-    Response response = await dio.post("/auth/register",
-        data: {"phone": phone, "username": name, "password": password});
+    Response response = await dio
+        .post("/auth/login", data: {"phone": phone, "password": password});
     if (navigatorKey.currentContext == null) {
       print("Navigator context is null! Cannot show alert.");
       return;
@@ -20,16 +20,17 @@ Future<void> register(String phone, String name, String password) async {
         QuickAlert.show(
           context: navigatorKey.currentContext!,
           type: QuickAlertType.success,
-          text: "Registration successful!",
+          text: "Login successfully!",
           onConfirmBtnTap: () =>
-              {GoRouter.of(navigatorKey.currentContext!).goNamed("login")},
+              GoRouter.of(navigatorKey.currentContext!).goNamed("home"),
         );
         break;
-      case 409:
+      case 401:
+      case 404:
         QuickAlert.show(
           context: navigatorKey.currentContext!,
           type: QuickAlertType.error,
-          text: "Phone number already registered!",
+          text: "Phone number or password is incorrect!",
         );
         break;
       default:

@@ -1,6 +1,6 @@
 import 'package:flockstay_mobile/components/auth/input_field.dart';
 import 'package:flockstay_mobile/constants/colors.dart';
-
+import 'package:flockstay_mobile/apis/auth/login.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -70,7 +70,7 @@ class LoginScreen extends StatelessWidget {
               width: double.infinity,
               child: TextButton(
                 onPressed: () {
-                  GoRouter.of(context).go("/home");
+                  login(phoneCtrlr.text, passwordCtrlr.text);
                 },
                 style: ButtonStyle(
                   backgroundColor: const WidgetStatePropertyAll(flockCyan),
