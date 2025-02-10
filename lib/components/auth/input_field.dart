@@ -26,14 +26,14 @@ class _InputFieldState extends State<InputField> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: flockCyan), // Replace with `flockCyan`
+        border: Border.all(color: flockCyan),
       ),
       child: Row(
         children: [
           Expanded(
             child: TextField(
               controller: widget.controller,
-              obscureText: !isPasswordVisible,
+              obscureText: !isPasswordVisible && widget.isPassword,
               textAlignVertical: TextAlignVertical.center,
               decoration: InputDecoration(
                 prefixIcon: Icon(widget.prefixIcon),

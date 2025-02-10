@@ -1,3 +1,6 @@
+// ignore_for_file: avoid_print
+
+import 'package:flockstay_mobile/apis/auth/register.dart';
 import 'package:flockstay_mobile/components/auth/input_field.dart';
 import 'package:flockstay_mobile/constants/colors.dart';
 import 'package:flutter/gestures.dart';
@@ -74,7 +77,9 @@ class RegisterScreen extends StatelessWidget {
               margin: const EdgeInsets.symmetric(vertical: 20),
               width: double.infinity,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  register(phoneCtrlr.text, nameCtrlr.text, passwordCtrlr.text);
+                },
                 style: ButtonStyle(
                   backgroundColor: const WidgetStatePropertyAll(flockCyan),
                   shape: WidgetStateProperty.all(
