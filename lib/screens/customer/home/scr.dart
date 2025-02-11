@@ -1,8 +1,7 @@
 import 'dart:ui';
-
 import 'package:flockstay_mobile/constants/colors.dart';
 import 'package:flockstay_mobile/screens/customer/home/city_card.dart';
-import 'package:flockstay_mobile/screens/customer/home/hotel_card.dart';
+import 'package:flockstay_mobile/screens/customer/home/pop_hotel_list.dart';
 import 'package:flockstay_mobile/screens/customer/home/section_header.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -133,34 +132,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     SectionHeader(title: "Popular stays"),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                      child: Wrap(spacing: 10, children: [
-                        HotelCard(
-                          name: "Muong Thanh",
-                          image: "assets/images/hotel_1.jpg",
-                          location: "Ho Chi Minh",
-                          price: 400,
-                          rating: 4,
-                        ),
-                        HotelCard(
-                          name: "Golden Lostus",
-                          image: "assets/images/hotel_2.jpg",
-                          location: "Da Lat",
-                          price: 90,
-                          rating: 4.5,
-                        ),
-                        HotelCard(
-                          name: "Muong Thanh",
-                          image: "assets/images/hotel_1.jpg",
-                          location: "Ho Chi Minh",
-                          price: 80,
-                          rating: 4,
-                        ),
-                      ]),
-                    ),
+                    PopularHotelList(),
                     SizedBox(height: 100)
                   ],
                 ),

@@ -60,15 +60,23 @@ class HotelCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    name,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 18),
+                  SizedBox(
+                    width: 180,
+                    child: Text(
+                      name,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      softWrap: false,
+                    ),
                   ),
                   RichText(
                       text: TextSpan(
                           style: const TextStyle(
-                            fontSize: 16,
+                            fontSize: 12,
                             fontWeight: FontWeight.w800,
                           ),
                           children: [
@@ -96,6 +104,7 @@ class HotelCard extends StatelessWidget {
                       ),
                       Text(location,
                           style: TextStyle(
+                              fontSize: 13,
                               fontWeight: FontWeight.w800,
                               color: const Color(0xff303030).withOpacity(0.5))),
                     ],

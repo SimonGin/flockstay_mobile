@@ -1,7 +1,7 @@
+// ignore_for_file: avoid_print
 import 'package:dio/dio.dart';
 import 'package:flockstay_mobile/models/auth/auth_entity.dart';
 import 'package:flockstay_mobile/services/dio_client.dart';
-import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<AuthEntity?> getMe() async {
@@ -11,7 +11,7 @@ Future<AuthEntity?> getMe() async {
   String? token = prefs.getString("access_token");
 
   if (token == null) {
-    debugPrint("No token found! User must log in.");
+    print("No token found! User must log in.");
     return null;
   }
 
@@ -32,8 +32,7 @@ Future<AuthEntity?> getMe() async {
         return null;
     }
   } catch (e) {
-    debugPrint("Error: $e");
-    debugPrint("Error1: $e");
+    print("Error: $e");
   }
   return null;
 }
