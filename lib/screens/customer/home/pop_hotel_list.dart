@@ -39,7 +39,7 @@ class _PopularHotelListState extends State<PopularHotelList> {
           children: popHotels.map((hotel) {
             return HotelCard(
               name: hotel.name,
-              image: "assets/images/hotel_1.jpg",
+              image: hotel.images[0],
               location: hotel.city,
               price: 100,
               rating: hotel.rating,

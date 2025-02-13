@@ -24,8 +24,7 @@ class CityCard extends StatelessWidget {
                 offset: Offset(5, 5), blurRadius: 5, color: Colors.black26)
           ],
           image: DecorationImage(
-            image: NetworkImage(
-                image), // Use NetworkImage instead of Image.network
+            image: NetworkImage(image),
             fit: BoxFit.cover,
           ),
         ),
@@ -55,7 +54,7 @@ class CityCard extends StatelessWidget {
             Text(name,
                 style: const TextStyle(
                     color: Colors.white, fontWeight: FontWeight.bold)),
-            Text("$hotelNum Hotels",
+            Text("$hotelNum ${hotelNum == 1 ? 'Hotel' : 'Hotels'}",
                 style: const TextStyle(color: Colors.white))
           ],
         ),

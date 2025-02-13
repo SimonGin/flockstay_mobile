@@ -10,8 +10,8 @@ Future<List<City>> getCities() async {
     Response response = await dio.get("/explore/cities");
     switch (response.statusCode) {
       case 200:
-        List<City> cities = City.fromJsonList(response.data["data"]);
-        // debugPrint(response.data["data"].toString());
+        List<City> cities =
+            City.fromJsonList(response.data["metadata"]["data"]);
         return cities;
       default:
         break;

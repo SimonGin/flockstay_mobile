@@ -26,7 +26,7 @@ class City {
       name: json['name'] ?? "Unknown",
       image: json['image'] ??
           "https://wallpapercat.com/w/full/6/8/1/294088-2048x1319-desktop-hd-los-angeles-background.jpg",
-      hotelNum: json['hotel_count'] ?? 0,
+      hotelNum: json['hotel_num'] ?? 0,
     );
   }
 
