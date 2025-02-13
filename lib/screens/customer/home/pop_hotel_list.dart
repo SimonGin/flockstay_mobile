@@ -1,4 +1,4 @@
-import 'package:flockstay_mobile/apis/hotel/get_hotels.dart';
+import 'package:flockstay_mobile/apis/explore/get_hotels.dart';
 import 'package:flockstay_mobile/models/hotel/hotel.dart';
 import 'package:flutter/material.dart';
 import 'package:flockstay_mobile/screens/customer/home/hotel_card.dart';

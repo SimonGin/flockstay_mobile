@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flockstay_mobile/constants/colors.dart';
-import 'package:flockstay_mobile/screens/customer/home/city_card.dart';
+import 'package:flockstay_mobile/screens/customer/home/explore_city_list.dart';
 import 'package:flockstay_mobile/screens/customer/home/pop_hotel_list.dart';
 import 'package:flockstay_mobile/screens/customer/home/section_header.dart';
 import 'package:flutter/material.dart';
@@ -106,31 +106,7 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     SectionHeader(title: "Explore cities"),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                      child: Wrap(
-                        spacing: 10,
-                        children: [
-                          CityCard(
-                            name: "Da Nang",
-                            image: "assets/images/city_1.webp",
-                            hotelNum: 256,
-                          ),
-                          CityCard(
-                            name: "Tokyo",
-                            image: "assets/images/city_2.jpg",
-                            hotelNum: 186,
-                          ),
-                          CityCard(
-                            name: "New York",
-                            image: "assets/images/city_3.avif",
-                            hotelNum: 321,
-                          ),
-                        ],
-                      ),
-                    ),
+                    ExploreCityList(),
                     SectionHeader(title: "Popular stays"),
                     PopularHotelList(),
                     SizedBox(height: 100)

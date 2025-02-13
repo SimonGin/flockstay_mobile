@@ -18,13 +18,17 @@ class CityCard extends StatelessWidget {
         height: viewport.height * 0.28,
         width: viewport.width * 0.38,
         decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(20)),
-            boxShadow: const [
-              BoxShadow(
-                  offset: Offset(5, 5), blurRadius: 5, color: Colors.black26)
-            ],
-            image:
-                DecorationImage(image: AssetImage(image), fit: BoxFit.cover)),
+          borderRadius: const BorderRadius.all(Radius.circular(20)),
+          boxShadow: const [
+            BoxShadow(
+                offset: Offset(5, 5), blurRadius: 5, color: Colors.black26)
+          ],
+          image: DecorationImage(
+            image: NetworkImage(
+                image), // Use NetworkImage instead of Image.network
+            fit: BoxFit.cover,
+          ),
+        ),
       ),
       Container(
           height: viewport.height * 0.28,

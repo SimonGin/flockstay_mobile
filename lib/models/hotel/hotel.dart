@@ -2,8 +2,8 @@ import 'dart:convert';
 
 class Hotel {
   final int id;
-  final String createdAt;
-  final String updatedAt;
+  final String? createdAt;
+  final String? updatedAt;
   final String? deletedAt;
   final String name;
   final String city;
@@ -16,8 +16,8 @@ class Hotel {
 
   Hotel({
     required this.id,
-    required this.createdAt,
-    required this.updatedAt,
+    this.createdAt,
+    this.updatedAt,
     this.deletedAt,
     required this.name,
     required this.city,
@@ -31,19 +31,25 @@ class Hotel {
 
   factory Hotel.fromJson(Map<String, dynamic> json) {
     return Hotel(
-      id: json['ID'],
-      createdAt: json['CreatedAt'],
-      updatedAt: json['UpdatedAt'],
-      deletedAt: json['DeletedAt'],
-      name: json['name'],
-      city: json['city'],
-      address: json['address'],
-      description: json['description'],
-      rating: double.parse(json['rating'].toString()),
+      id: json['id'] ?? 0, // Fix: Ensure id is correctly parsed
+      createdAt: json['CreatedAt'], // Might be null
+      updatedAt: json['UpdatedAt'], // Might be null
+      deletedAt: json['DeletedAt'], // Might be null
+      name: json['name'] ?? "Unknown",
+      city: json['city'] ?? "Unknown",
+      address: json['address'] ?? "Unknown",
+      description: json['description'] ?? "No description available",
+      rating: (json['rating'] != null)
+          ? double.tryParse(json['rating'].toString()) ?? 0.0
+          : 0.0,
       images: List<String>.from(jsonDecode(json['images'])),
       checkInTime: json['check_in_time'],
       checkOutTime: json['check_out_time'],
     );
+  }
+
+  static List<Hotel> fromJsonList(List<dynamic> jsonList) {
+    return jsonList.map((json) => Hotel.fromJson(json)).toList();
   }
 
   Map<String, dynamic> toJson() {
@@ -61,9 +67,5 @@ class Hotel {
       'check_in_time': checkInTime,
       'check_out_time': checkOutTime,
     };
-  }
-
-  static List<Hotel> fromJsonList(List<dynamic> jsonList) {
-    return jsonList.map((json) => Hotel.fromJson(json)).toList();
   }
 }
