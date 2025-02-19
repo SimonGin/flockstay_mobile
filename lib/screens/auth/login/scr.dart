@@ -45,9 +45,11 @@ class LoginScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: Column(children: [
                 InputField(
-                    controller: phoneCtrlr,
-                    placeholder: "Enter your phone",
-                    prefixIcon: Icons.phone),
+                  controller: phoneCtrlr,
+                  placeholder: "Enter your phone",
+                  prefixIcon: Icons.phone,
+                  isTelNum: true,
+                ),
                 const SizedBox(height: 20),
                 InputField(
                   controller: passwordCtrlr,

@@ -6,6 +6,15 @@ import 'package:quickalert/quickalert.dart';
 import 'package:go_router/go_router.dart';
 
 Future<void> register(String phone, String name, String password) async {
+  if (phone.isEmpty || name.isEmpty || password.isEmpty) {
+    QuickAlert.show(
+      context: navigatorKey.currentContext!,
+      type: QuickAlertType.warning,
+      text: "Please fill in all the inputs before registering!",
+    );
+    return;
+  }
+
   Dio dio = DioClient().dio;
 
   try {

@@ -6,13 +6,15 @@ class InputField extends StatefulWidget {
   final String placeholder;
   final IconData prefixIcon;
   final bool isPassword;
+  final bool isTelNum;
 
   const InputField(
       {super.key,
       required this.controller,
       required this.placeholder,
       required this.prefixIcon,
-      this.isPassword = false});
+      this.isPassword = false,
+      this.isTelNum = false});
 
   @override
   State<InputField> createState() => _InputFieldState();
@@ -35,6 +37,8 @@ class _InputFieldState extends State<InputField> {
               controller: widget.controller,
               obscureText: !isPasswordVisible && widget.isPassword,
               textAlignVertical: TextAlignVertical.center,
+              keyboardType:
+                  widget.isTelNum ? TextInputType.phone : TextInputType.text,
               decoration: InputDecoration(
                 prefixIcon: Icon(widget.prefixIcon),
                 prefixIconColor: flockCyan, // Replace with `flockCyan`

@@ -8,6 +8,14 @@ import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> login(String phone, String password) async {
+  if (phone.isEmpty || password.isEmpty) {
+    QuickAlert.show(
+      context: navigatorKey.currentContext!,
+      type: QuickAlertType.warning,
+      text: "Please fill in all the inputs before logging in!",
+    );
+    return;
+  }
   Dio dio = DioClient().dio;
 
   try {

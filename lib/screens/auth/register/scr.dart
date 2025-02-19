@@ -51,7 +51,8 @@ class RegisterScreen extends StatelessWidget {
                 InputField(
                     controller: phoneCtrlr,
                     placeholder: "Enter your phone",
-                    prefixIcon: Icons.phone),
+                    prefixIcon: Icons.phone,
+                    isTelNum: true),
                 const SizedBox(height: 20),
                 InputField(
                     controller: nameCtrlr,
