@@ -10,8 +10,11 @@ class CustomerLayout extends StatefulWidget {
   final Widget childBody;
   final String currentScreen;
 
-  const CustomerLayout(
-      {super.key, required this.childBody, required this.currentScreen});
+  const CustomerLayout({
+    super.key,
+    required this.childBody,
+    required this.currentScreen,
+  });
 
   @override
   State<CustomerLayout> createState() => _CustomerLayoutState();
@@ -39,16 +42,17 @@ class _CustomerLayoutState extends State<CustomerLayout> {
   void didUpdateWidget(CustomerLayout oldWidget) {
     super.didUpdateWidget(oldWidget);
     final newIndex = _routes.indexOf(widget.currentScreen);
+
+    // Only update if the index has changed
     if (newIndex != _currentIndex) {
       _currentIndex = newIndex;
-      _pageController
-          .jumpToPage(_currentIndex); // Ensure the PageView is synchronized
+      _pageController.jumpToPage(_currentIndex);
     }
   }
 
   void _onItemTapped(int index) {
     if (_currentIndex != index) {
-      context.go(_routes[index]);
+      context.go(_routes[index]); // ✅ Update URL in GoRouter
       _pageController.animateToPage(
         index,
         duration: const Duration(milliseconds: 300),
@@ -65,11 +69,12 @@ class _CustomerLayoutState extends State<CustomerLayout> {
     return Scaffold(
       body: PageView(
         controller: _pageController,
+        physics: const BouncingScrollPhysics(), // ✅ Swipe gestures enabled
         onPageChanged: (index) {
           setState(() {
             _currentIndex = index;
           });
-          context.go(_routes[index]); // Update URL on swipe
+          context.go(_routes[index]); // ✅ Sync URL with PageView swipe
         },
         children: const [
           HomeScreen(),

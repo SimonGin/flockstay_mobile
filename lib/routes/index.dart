@@ -1,3 +1,4 @@
+import 'package:flockstay_mobile/screens/customer/hotel_info/scr.dart';
 import 'package:flutter/material.dart';
 import 'package:flockstay_mobile/screens/auth/login/scr.dart';
 import 'package:flockstay_mobile/screens/auth/register/scr.dart';
@@ -22,6 +23,10 @@ final GoRouter appRouter = GoRouter(
           name: "register",
           path: "/auth/register",
           builder: (context, state) => RegisterScreen()),
+      GoRoute(
+          name: "hotels",
+          path: "/hotels",
+          builder: (context, state) => const HotelInfoScreen()),
       ShellRoute(
         navigatorKey: navigatorKey,
         routes: [

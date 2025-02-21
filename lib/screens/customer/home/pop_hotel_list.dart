@@ -2,6 +2,7 @@ import 'package:flockstay_mobile/apis/explore/get_hotels.dart';
 import 'package:flockstay_mobile/models/hotel/hotel.dart';
 import 'package:flutter/material.dart';
 import 'package:flockstay_mobile/screens/customer/home/hotel_card.dart';
+import 'package:go_router/go_router.dart';
 
 class PopularHotelList extends StatefulWidget {
   const PopularHotelList({
@@ -43,6 +44,7 @@ class _PopularHotelListState extends State<PopularHotelList> {
               location: hotel.city,
               price: 100,
               rating: hotel.rating,
+              viewInfo: () => GoRouter.of(context).push("/hotels"),
             );
           }).toList()),
     );
