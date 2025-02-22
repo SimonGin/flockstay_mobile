@@ -10,7 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 Future<void> login(String phone, String password) async {
   if (phone.isEmpty || password.isEmpty) {
     QuickAlert.show(
-      context: navigatorKey.currentContext!,
+      context: rootNavigatorKey.currentContext!,
       type: QuickAlertType.warning,
       text: "Please fill in all the inputs before logging in!",
     );
@@ -21,7 +21,7 @@ Future<void> login(String phone, String password) async {
   try {
     Response response = await dio
         .post("/auth/login", data: {"phone": phone, "password": password});
-    if (navigatorKey.currentContext == null) {
+    if (rootNavigatorKey.currentContext == null) {
       print("Navigator context is null! Cannot show alert.");
       return;
     }
@@ -31,24 +31,24 @@ Future<void> login(String phone, String password) async {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         await prefs.setString('access_token', loginData.accessToken);
         QuickAlert.show(
-          context: navigatorKey.currentContext!,
+          context: rootNavigatorKey.currentContext!,
           type: QuickAlertType.success,
           text: "Login successfully!",
           onConfirmBtnTap: () =>
-              GoRouter.of(navigatorKey.currentContext!).goNamed("home"),
+              GoRouter.of(rootNavigatorKey.currentContext!).goNamed("home"),
         );
         break;
       case 401:
       case 404:
         QuickAlert.show(
-          context: navigatorKey.currentContext!,
+          context: rootNavigatorKey.currentContext!,
           type: QuickAlertType.error,
           text: "Phone number or password is incorrect!",
         );
         break;
       default:
         QuickAlert.show(
-          context: navigatorKey.currentContext!,
+          context: rootNavigatorKey.currentContext!,
           type: QuickAlertType.error,
           text: "Something went wrong! Please try again later.",
         );

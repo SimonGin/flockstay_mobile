@@ -9,10 +9,11 @@ import 'package:flockstay_mobile/screens/customer/profile/scr.dart';
 import 'package:flockstay_mobile/screens/customer/reservations/scr.dart';
 import 'package:go_router/go_router.dart';
 
-final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> customerShellKey = GlobalKey<NavigatorState>();
 
 final GoRouter appRouter = GoRouter(
-    navigatorKey: navigatorKey,
+    navigatorKey: rootNavigatorKey,
     initialLocation: "/auth/login",
     routes: [
       GoRoute(
@@ -23,28 +24,36 @@ final GoRouter appRouter = GoRouter(
           name: "register",
           path: "/auth/register",
           builder: (context, state) => RegisterScreen()),
-      GoRoute(
-          name: "hotels",
-          path: "/hotels",
-          builder: (context, state) => const HotelInfoScreen()),
       ShellRoute(
-        navigatorKey: navigatorKey,
+        navigatorKey: customerShellKey,
         routes: [
           GoRoute(
               name: "home",
               path: "/home",
-              builder: (context, state) => const HomeScreen()),
+              parentNavigatorKey: customerShellKey,
+              builder: (context, state) => const HomeScreen(),
+              routes: [
+                GoRoute(
+                  name: "hotels",
+                  path: "/hotels",
+                  parentNavigatorKey: rootNavigatorKey,
+                  builder: (context, state) => const HotelInfoScreen(),
+                )
+              ]),
           GoRoute(
               name: "reservations",
               path: "/reservations",
+              parentNavigatorKey: customerShellKey,
               builder: (context, state) => const ReservationsScreen()),
           GoRoute(
               name: "notifications",
               path: "/notifications",
+              parentNavigatorKey: customerShellKey,
               builder: (context, state) => const NotificationsScreen()),
           GoRoute(
               name: "profile",
               path: "/profile",
+              parentNavigatorKey: customerShellKey,
               builder: (context, state) => const ProfileScreen()),
         ],
         builder: (context, state, child) => CustomerLayout(

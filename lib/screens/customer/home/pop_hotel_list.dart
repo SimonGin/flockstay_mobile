@@ -44,7 +44,7 @@ class _PopularHotelListState extends State<PopularHotelList> {
               location: hotel.city,
               price: 100,
               rating: hotel.rating,
-              viewInfo: () => GoRouter.of(context).push("/hotels"),
+              viewInfo: () => GoRouter.of(context).push("/home/hotels"),
             );
           }).toList()),
     );
